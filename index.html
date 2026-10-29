@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শুভ বধূবরণ ও বউভাত — অভিরাম ও মোনালিসা</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --cream: #fbf3dc;
+      --gold: #c28c32;
+      --gold-d: #734b12;
+      --gold-p: #f7e8b6;
+      --red: #8a1212;
+      --red-d: #5e0b0b;
+      --green: #23471b;
+      --ink: #351b0a
+    }
+
+    body {
+      background: #e6d3a8;
+      font-family: 'Hind Siliguri', sans-serif;
+      color: var(--ink);
+      overflow-x: hidden
+    }
+
+    .floral {
+      background-color: var(--cream);
+      background-image: radial-gradient(ellipse at 50% 30%, rgba(255, 252, 240, .9), rgba(246, 232, 196, .85)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23c9b06a' stroke-opacity='.4'%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Ccircle cx='40' cy='23' r='7'/%3E%3Ccircle cx='40' cy='57' r='7'/%3E%3Ccircle cx='23' cy='40' r='7'/%3E%3Ccircle cx='57' cy='40' r='7'/%3E%3Cpath d='M0 0q10 12 0 24M80 80q-10-12 0-24'/%3E%3C/g%3E%3C/svg%3E")
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(50, 18, 5, .35);
+      overflow: hidden
+    }
+
+    /* ── Animations ── */
+    @keyframes up {
+      from {
+        opacity: 0;
+        transform: translateY(22px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes sway {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(4px)
+      }
+    }
+
+    @keyframes swing {
+      from {
+        transform: rotate(-4deg)
+      }
+
+      to {
+        transform: rotate(4deg)
+      }
+    }
+
+    @keyframes drape {
+      from {
+        transform: scaleY(.2);
+        opacity: 0
+      }
+
+      to {
+        transform: none;
+        opacity: 1
+      }
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: -200% 0
+      }
+
+      100% {
+        background-position: 200% 0
+      }
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(1.06)
+      }
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-6vh) rotate(0);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .9
+      }
+
+      100% {
+        transform: translateY(106vh) rotate(540deg) translateX(40px);
+        opacity: .2
+      }
+    }
+
+    @keyframes glow {
+      50% {
+        box-shadow: 0 0 0 3px var(--red), 0 0 0 4.5px var(--gold), 0 0 18px 4px rgba(238, 203, 124, .7)
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    .petal {
+      position: fixed;
+      top: 0;
+      z-index: 50;
+      width: 10px;
+      height: 14px;
+      border-radius: 50% 50% 50% 0;
+      background: radial-gradient(#f7c948, #e8890c);
+      pointer-events: none;
+      animation: fall linear infinite
+    }
+
+    /* ── Splash ── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(15, 5, 2, .93);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      transition: opacity .9s, visibility .9s
+    }
+
+    #splash.gone {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
+
+    .splash-card {
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      padding: 40px 26px 32px;
+      border: 4px solid var(--red-d);
+      box-shadow: 0 0 0 2px var(--gold), 0 0 0 6px var(--cream), 0 24px 80px rgba(0, 0, 0, .5);
+      animation: up .8s both;
+      border-radius: 4px
+    }
+
+    .splash-card .mini {
+      font-family: 'Tiro Bangla', serif;
+      color: var(--green);
+      margin-bottom: 10px
+    }
+
+    .splash-card h1 {
+      font-family: 'Tiro Bangla', serif;
+      font-size: 1.9rem;
+      color: var(--red-d);
+      line-height: 1.35;
+      margin: 8px 0 4px
+    }
+
+    .splash-card .en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold-d);
+      margin-bottom: 6px
+    }
+
+    .splash-card .couple {
+      font-family: 'Tiro Bangla', serif;
+      font-size: 1.12rem;
+      margin: 10px 0 22px
+    }
+
+    .shankha {
+      width: 56px;
+      margin: 0 auto 10px;
+      animation: pulse 3s ease-in-out infinite
+    }
+
+    .enter-btn {
+      padding: 12px 36px;
+      background: var(--red);
+      color: var(--gold-p);
+      font: 1.05rem 'Tiro Bangla', serif;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 0 3px var(--red), 0 0 0 4.5px var(--gold);
+      cursor: pointer;
+      animation: glow 2.4s ease-in-out infinite
+    }
+
+    /* ── Top curtain (pure SVG) ── */
+    .curtain {
+      position: relative;
+      line-height: 0;
+      aspect-ratio: 674/230;
+      overflow: visible;
+      z-index: 3
+    }
+
+    .curtain>svg {
+      width: 100%;
+      height: 100%;
+      display: block
+    }
+
+    .curtain .drape {
+      transform-origin: top;
+      animation: drape 1.4s ease-out both
+    }
+
+    .curtain .garland {
+      animation: sway 3.2s ease-in-out infinite alternate
+    }
+
+    .lantern {
+      position: absolute;
+      filter: drop-shadow(0 6px 6px rgba(60, 20, 0, .45));
+      transform-origin: 50% 0;
+      animation: swing 3.6s ease-in-out infinite alternate;
+      width: clamp(30px, 9vw, 62px)
+    }
+
+    .lantern svg {
+      width: 100%;
+      display: block
+    }
+
+    /* ── Bottom border (pure SVG) ── */
+    .bottom-border {
+      line-height: 0
+    }
+
+    .bottom-border svg {
+      width: 100%;
+      height: clamp(34px, 8vw, 56px);
+      display: block
+    }
+
+    /* ── Typography/blocks ── */
+    .orn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 12px auto;
+      max-width: 300px
+    }
+
+    .orn i {
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      background-size: 200% 100%;
+      animation: shine 4s linear infinite
+    }
+
+    .orn b {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      transform: rotate(45deg)
+    }
+
+    .orn.gold i {
+      background: linear-gradient(90deg, transparent, var(--gold), #fff3c4, var(--gold), transparent);
+      background-size: 200% 100%
+    }
+
+    .orn.gold b {
+      background: var(--gold)
+    }
+
+    .mantra {
+      font-family: 'Tiro Bangla', serif;
+      font-size: 1.2rem;
+      color: var(--green);
+      text-align: center;
+      padding-top: 16px
+    }
+
+    .sec {
+      padding: clamp(22px, 4.5vw, 42px) clamp(22px, 6vw, 64px);
+      text-align: center
+    }
+
+    .hd {
+      font-family: 'Tiro Bangla', serif;
+      color: var(--red);
+      font-size: clamp(1.5rem, 4.5vw, 2rem)
+    }
+
+    .hd span {
+      color: var(--gold);
+      margin: 0 8px
+    }
+
+    .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold-d);
+      letter-spacing: .1em;
+      margin-bottom: 12px
+    }
+
+    .txt {
+      font-family: 'Tiro Bangla', serif;
+      font-size: clamp(1rem, 2.5vw, 1.12rem);
+      line-height: 2.1;
+      color: var(--red);
+      margin-bottom: 14px
+    }
+
+    .txt b {
+      font-weight: 600;
+      color: var(--red-d)
+    }
+
+    /* portraits */
+    .pr {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin: 12px 0 20px
+    }
+
+    .pf {
+      width: clamp(130px, 30vw, 205px)
+    }
+
+    .arch {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 50% 50% 4px 4px/36% 36% 4px 4px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 0 2px var(--cream), 0 0 0 4px var(--gold), 0 10px 30px rgba(80, 30, 10, .25)
+    }
+
+    .arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+      transition: transform .8s
+    }
+
+    .pf:hover .arch img {
+      transform: scale(1.06)
+    }
+
+    .role {
+      display: block;
+      margin-top: 12px;
+      font-size: .68rem;
+      letter-spacing: .2em;
+      color: var(--gold-d)
+    }
+
+    .nm {
+      font-family: 'Tiro Bangla', serif;
+      font-size: clamp(1rem, 2.6vw, 1.25rem);
+      color: var(--red);
+      display: block
+    }
+
+    .ne {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: #633718
+    }
+
+    .mid {
+      width: clamp(44px, 10vw, 70px);
+      padding-bottom: 70px;
+      display: flex;
+      justify-content: center
+    }
+
+    .mid span {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      background: var(--cream);
+      display: grid;
+      place-items: center;
+      color: var(--red);
+      animation: pulse 2.5s infinite
+    }
+
+    .title {
+      font-family: 'Tiro Bangla', serif;
+      font-size: clamp(2rem, 6.5vw, 3rem);
+      color: var(--red-d);
+      line-height: 1.25
+    }
+
+    .date {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 26px;
+      border: 1.5px solid rgba(194, 140, 50, .6);
+      box-shadow: 0 0 0 4px var(--cream), 0 0 0 5.5px rgba(194, 140, 50, .3);
+      background: rgba(255, 251, 240, .8)
+    }
+
+    .date .bn {
+      font-family: 'Tiro Bangla', serif;
+      color: var(--red)
+    }
+
+    .date .en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold-d);
+      font-size: .9rem
+    }
+
+    /* cards */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 16px;
+      text-align: left
+    }
+
+    @media(max-width:580px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .card {
+      border: 1.5px solid rgba(194, 140, 50, .5);
+      background: rgba(255, 252, 243, .85);
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(80, 30, 10, .08);
+      transition: transform .35s, box-shadow .35s
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 26px rgba(80, 30, 10, .16)
+    }
+
+    .card.full {
+      grid-column: 1/-1
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      background: var(--red);
+      color: var(--cream);
+      padding: 3px 10px;
+      margin-bottom: 6px
+    }
+
+    .ct {
+      font-family: 'Tiro Bangla', serif;
+      color: var(--red);
+      font-size: 1.3rem;
+      margin-bottom: 6px
+    }
+
+    .cd {
+      font-family: 'Tiro Bangla', serif;
+      font-size: .95rem;
+      color: #633718;
+      margin-bottom: 8px
+    }
+
+    .ds {
+      font-family: 'Tiro Bangla', serif;
+      font-size: .93rem;
+      line-height: 1.8
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Tiro Bangla', serif;
+      font-size: .93rem;
+      margin-top: 6px
+    }
+
+    td {
+      padding: 4px 2px;
+      vertical-align: baseline
+    }
+
+    td:first-child {
+      color: #633718;
+      white-space: nowrap;
+      width: 56px
+    }
+
+    td:nth-child(2) {
+      width: 14px;
+      color: var(--gold-d)
+    }
+
+    td b {
+      color: var(--red)
+    }
+
+    .acts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px
+    }
+
+    .btn {
+      font: 500 .75rem 'Hind Siliguri', sans-serif;
+      padding: 6px 14px;
+      border: 1px solid rgba(138, 18, 18, .5);
+      color: var(--red);
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: .2s
+    }
+
+    .btn:hover {
+      background: var(--red);
+      color: var(--gold-p)
+    }
+
+    /* feast */
+    .feast {
+      position: relative;
+      height: clamp(200px, 40vw, 320px);
+      overflow: hidden
+    }
+
+    .feast img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 6s
+    }
+
+    .feast.visible img {
+      transform: scale(1.08)
+    }
+
+    .feast::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(15, 4, 1, .05), rgba(15, 4, 1, .65))
+    }
+
+    .feast div {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      text-align: center;
+      z-index: 2;
+      font-family: 'Tiro Bangla', serif;
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      color: var(--gold-p);
+      text-shadow: 0 2px 10px #000
+    }
+
+    /* countdown */
+    .cdg {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 460px;
+      margin: 14px auto 0
+    }
+
+    .cb {
+      border: 1.5px solid rgba(194, 140, 50, .5);
+      padding: 12px 4px;
+      background: rgba(255, 251, 240, .85)
+    }
+
+    .cn {
+      display: block;
+      font-family: 'Tiro Bangla', serif;
+      font-size: clamp(1.6rem, 5.5vw, 2.3rem);
+      color: var(--red)
+    }
+
+    .cl {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--gold-d)
+    }
+
+    .foot {
+      border-top: 1px solid rgba(194, 140, 50, .4)
+    }
+
+    .foot h3 {
+      font-family: 'Tiro Bangla', serif;
+      color: var(--green);
+      font-size: 1.3rem
+    }
+
+    .foot p {
+      font-family: 'Tiro Bangla', serif;
+      color: var(--red);
+      line-height: 1.9
+    }
+
+    #music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 1.5px solid var(--gold);
+      color: var(--gold-p);
+      cursor: pointer;
+      font-size: 1.15rem
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 76px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+      background: #1b0d05;
+      color: var(--gold-p);
+      padding: 8px 22px;
+      border: 1px solid var(--gold);
+      z-index: 99;
+      transition: opacity .3s
+    }
+
+    #toast.show {
+      opacity: 1
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none
+      }
+
+      .petal {
+        display: none
+      }
+    }
+
+    @keyframes flick {
+
+      0%,
+      100% {
+        opacity: .85;
+        transform: scale(1)
+      }
+
+      30% {
+        opacity: 1;
+        transform: scale(1.07)
+      }
+
+      60% {
+        opacity: .75;
+        transform: scale(.96)
+      }
+    }
+
+    .lantern .glow {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: flick 2.6s ease-in-out infinite
+    }
+
+    .lantern .flame {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: flick 1.3s ease-in-out infinite
+    }
+
+    /* paper grain, vignette & depth */
+    body {
+      background: radial-gradient(ellipse at 50% 0, #f1e1b8, #cdb27e 70%, #a98d58)
+    }
+
+    .page {
+      border-radius: 3px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, .25), 0 30px 90px rgba(40, 14, 3, .5)
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: .55;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .15 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"), radial-gradient(ellipse at center, transparent 55%, rgba(110, 70, 20, .28))
+    }
+
+    .page::after {
+      content: '';
+      position: absolute;
+      inset: 9px;
+      z-index: 19;
+      pointer-events: none;
+      border: 1.5px solid rgba(194, 140, 50, .75);
+      box-shadow: inset 0 0 0 4px rgba(251, 243, 220, .6), inset 0 0 0 5px rgba(194, 140, 50, .35)
+    }
+
+    .txt,
+    .hd,
+    .title,
+    .mantra {
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .55), 0 -.5px 0 rgba(60, 10, 0, .25)
+    }
+
+    .card,
+    .date,
+    .cb {
+      background-image: linear-gradient(135deg, rgba(255, 255, 255, .55), rgba(240, 220, 170, .25));
+      backdrop-filter: blur(1px)
+    }
+
+    .arch {
+      box-shadow: 0 0 0 2px var(--cream), 0 0 0 4px #b8802a, 0 0 0 6px var(--cream), 0 14px 28px rgba(60, 20, 5, .45)
+    }
+
+    .bottom-border {
+      box-shadow: 0 -4px 10px rgba(60, 20, 0, .25)
+    }
+  </style>
+</head>
+
+<body>
+
+  <audio id="audio" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="splash" role="dialog" aria-modal="true">
+    <div class="splash-card floral">
+      <svg class="shankha" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" stroke="#c28c32" stroke-width="1.3" />
+        <path d="M32 10Q42 18 40 30Q38 42 28 47Q18 52 13 44Q8 36 16 27Q21 21 30 23Q37 25 35 33Q33 40 28 38"
+          stroke="#c28c32" stroke-width="1.8" stroke-linecap="round" />
+        <circle cx="32" cy="32" r="2.5" fill="#c28c32" />
+      </svg>
+      <p class="mini">শ্রী শ্রী প্রজাপতয়ে নমঃ</p>
+      <div class="orn gold"><i></i><b></b><i></i></div>
+      <h1>শুভ বধূবরণ<br>ও বউভাত</h1>
+      <p class="en">Bodhu Boron &amp; Boubhat Reception</p>
+      <div class="orn gold"><i></i><b></b><i></i></div>
+      <p class="couple">অভিরাম নাথ ও মোনালিসা দেবনাথ</p>
+      <button class="enter-btn" id="enter-btn">আমন্ত্রণপত্র দেখুন</button>
+    </div>
+  </div>
+
+  <button id="music-btn" aria-label="সঙ্গীত">♪</button>
+  <div id="toast"></div>
+
+  <div class="page floral" id="card">
+
+    <!-- Curtain, marigold garlands & lanterns — all code, no images -->
+    <div class="curtain">
+      <svg viewBox="0 0 674 230" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="fold" x1="0" x2=".085" y1="0" y2="0" spreadMethod="repeat">
+            <stop offset="0" stop-color="#5a0707" />
+            <stop offset=".22" stop-color="#a51b1b" />
+            <stop offset=".42" stop-color="#d63a36" />
+            <stop offset=".6" stop-color="#9a1616" />
+            <stop offset=".85" stop-color="#5f0808" />
+            <stop offset="1" stop-color="#4a0505" />
+          </linearGradient>
+          <linearGradient id="shade" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#1a0000" stop-opacity=".55" />
+            <stop offset=".45" stop-color="#000" stop-opacity="0" />
+            <stop offset="1" stop-color="#ff9a8a" stop-opacity=".18" />
+          </linearGradient>
+          <linearGradient id="gold" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#fff0a8" />
+            <stop offset=".4" stop-color="#d9a032" />
+            <stop offset=".7" stop-color="#8f5d10" />
+            <stop offset="1" stop-color="#f1cf6a" />
+          </linearGradient>
+          <linearGradient id="lg" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#b8741a" />
+            <stop offset=".45" stop-color="#ffe08a" />
+            <stop offset="1" stop-color="#a9650f" />
+          </linearGradient>
+          <radialGradient id="lglow">
+            <stop offset="0" stop-color="#ffe9a0" stop-opacity=".85" />
+            <stop offset="1" stop-color="#ffd060" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="pet">
+            <stop offset="0" stop-color="#ffd84d" />
+            <stop offset=".6" stop-color="#f7a21a" />
+            <stop offset="1" stop-color="#e07800" />
+          </radialGradient>
+          <radialGradient id="ctr">
+            <stop offset="0" stop-color="#d27a00" />
+            <stop offset="1" stop-color="#6a3300" />
+          </radialGradient>
+          <filter id="ds" x="-5%" y="-5%" width="110%" height="140%">
+            <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#2a0000" flood-opacity=".55" />
+          </filter>
+          <clipPath id="dc">
+            <path d="M0 22H674V95Q590 135 505 95Q421 135 337 95Q253 135 168 95Q84 135 0 95Z" />
+          </clipPath>
+        </defs>
+        <g class="drape" filter="url(#ds)">
+          <path d="M0 22H674V95Q590 135 505 95Q421 135 337 95Q253 135 168 95Q84 135 0 95Z" fill="url(#fold)" />
+          <g id="folds" clip-path="url(#dc)"></g>
+          <path d="M0 22H674V95Q590 135 505 95Q421 135 337 95Q253 135 168 95Q84 135 0 95Z" fill="url(#shade)" />
+          <path d="M0 99Q84 139 168 99Q253 139 337 99Q421 139 505 99Q590 139 674 99" fill="none" stroke="url(#gold)"
+            stroke-width="6" stroke-dasharray="1.6 2.2" />
+          <path d="M0 95Q84 135 168 95Q253 135 337 95Q421 135 505 95Q590 135 674 95" fill="none" stroke="url(#gold)"
+            stroke-width="2.6" />
+          <g id="tassels"></g>
+        </g>
+        <g id="garland" class="garland"></g>
+        <g id="toprow"></g>
+        <rect y="22" width="674" height="3" fill="#7a4e12" opacity=".8" />
+      </svg>
+      <div class="lantern" style="left:6%;top:40%"><svg viewBox="0 0 60 120">
+          <path d="M30 0V20" stroke="#6b4a1a" stroke-width="1.6" />
+          <circle class="glow" cx="30" cy="62" r="34" fill="url(#lglow)" />
+          <path d="M19 20h22l-3 7H22z" fill="url(#gold)" stroke="#6b4a10" stroke-width=".6" />
+          <path d="M22 27h16c8 10 12 24 8 40-3 10-8 14-16 14s-13-4-16-14c-4-16 0-30 8-40z" fill="url(#lg)"
+            stroke="#8a5a14" stroke-width=".8" />
+          <path d="M30 27v54M25 28q-9 26 0 52M35 28q9 26 0 52" stroke="#9a6a1c" stroke-width=".7" fill="none"
+            opacity=".75" />
+          <ellipse class="flame" cx="30" cy="58" rx="4" ry="9" fill="#fff6c8" />
+          <path d="M21 81h18l-3 6H24z" fill="url(#gold)" stroke="#6b4a10" stroke-width=".6" />
+          <path d="M30 87v14" stroke="#c08a2c" stroke-width="1.2" />
+          <path d="M26 101h8l2 14h-12z" fill="url(#gold)" />
+        </svg></div>
+      <div class="lantern" style="right:6%;top:44%"><svg viewBox="0 0 60 120">
+          <path d="M30 0V20" stroke="#6b4a1a" stroke-width="1.6" />
+          <circle class="glow" cx="30" cy="62" r="34" fill="url(#lglow)" />
+          <path d="M19 20h22l-3 7H22z" fill="url(#gold)" stroke="#6b4a10" stroke-width=".6" />
+          <path d="M22 27h16c8 10 12 24 8 40-3 10-8 14-16 14s-13-4-16-14c-4-16 0-30 8-40z" fill="url(#lg)"
+            stroke="#8a5a14" stroke-width=".8" />
+          <path d="M30 27v54M25 28q-9 26 0 52M35 28q9 26 0 52" stroke="#9a6a1c" stroke-width=".7" fill="none"
+            opacity=".75" />
+          <ellipse class="flame" cx="30" cy="58" rx="4" ry="9" fill="#fff6c8" />
+          <path d="M21 81h18l-3 6H24z" fill="url(#gold)" stroke="#6b4a10" stroke-width=".6" />
+          <path d="M30 87v14" stroke="#c08a2c" stroke-width="1.2" />
+          <path d="M26 101h8l2 14h-12z" fill="url(#gold)" />
+        </svg></div>
+    </div>
+
+    <div class="sec" style="padding-top:0">
+      <p class="mantra">শ্রী শ্রী প্রজাপতয়ে নমঃ</p>
+      <div class="orn"><i></i><b></b><i></i></div>
+
+      <div class="pr fade-up">
+        <div class="pf">
+          <div class="arch"><img src="boy.webp" alt="অভিরাম নাথ" width="300" height="400"></div>
+          <span class="role">বর · THE GROOM</span><span class="nm">অভিরাম নাথ</span><span class="ne">Aviram Nath</span>
+        </div>
+        <div class="mid"><span>❖</span></div>
+        <div class="pf">
+          <div class="arch"><img src="girl.webp" alt="মোনালিসা দেবনাথ" width="300" height="400"></div>
+          <span class="role">বধূ · THE BRIDE</span><span class="nm">মোনালিসা দেবনাথ</span><span class="ne">Monalisa
+            Debnath</span>
+        </div>
+      </div>
+
+      <h1 class="title fade-up">শুভ বধূবরণ ও বউভাত</h1>
+      <p class="sub">Bodhu Boron &amp; Boubhat Reception</p>
+      <div class="orn gold"><i></i><b></b><i></i></div>
+      <div class="date fade-up">
+        <div class="bn">সোমবার ও মঙ্গলবার, ১৪ ও ১৫ ডিসেম্বর ২০২৬ (২৮–২৯ অগ্রহায়ণ, ১৪৩৩)</div>
+        <div class="en">Monday &amp; Tuesday · 14 &amp; 15 December 2026</div>
+      </div>
+    </div>
+
+    <div class="sec fade-up">
+      <p class="txt" style="font-size:1.35rem"><b>সবিনয় নিবেদন,</b></p>
+      <p class="txt">
+        পরম করুণাময় ঈশ্বরের কৃপায় ও গুরুজনদের শুভেচ্ছায়<br>
+        আমাদের পরম স্নেহের পুত্র <b>কল্যাণীয় অভিরাম নাথ</b>-এর সহিত<br>
+        <b>শ্রী মৃত্যুঞ্জয় দেবনাথ ও শ্রীমতী কাকলী দেবনাথের</b> সুযোগ্যা কন্যা<br>
+        <b>কল্যাণীয়া মোনালিসা দেবনাথ</b>-এর শুভ বিবাহ সুসম্পন্ন হইয়াছে।
+      </p>
+      <div class="orn"><i></i><b></b><i></i></div>
+      <p class="txt">
+        এতদুপলক্ষে আগামী <b>২৯শে অগ্রহায়ণ, ১৪৩৩ সন ইং (১৫ই ডিসেম্বর, ২০২৬) মঙ্গলবার</b><br>
+        সন্ধ্যায় আয়োজিত <b>প্রীতিভোজ অনুষ্ঠানে</b> আপনার / আপনাদের উপস্থিতি ও শুভাশীর্বাদ<br>
+        ওদের আগামী দিনের চলার পথে পরম পাথেয় হয়ে থাকবে,<br>
+        আর সমস্ত অনুষ্ঠানটি হয়ে উঠবে আনন্দময় ও সর্বাঙ্গ সুন্দর।
+      </p>
+    </div>
+
+    <div class="sec fade-up" style="background:rgba(247,238,225,.55);border-block:1px solid rgba(194,140,50,.35)">
+      <h2 class="hd"><span>❖</span>পরিচিতি<span>❖</span></h2>
+      <p class="sub">The Lineage of Bride &amp; Groom</p>
+      <div class="grid">
+        <div class="card">
+          <span class="badge">বরপক্ষ</span>
+          <table>
+            <tr>
+              <td>পাত্র</td>
+              <td>:</td>
+              <td><b>কল্যাণীয় অভিরাম নাথ</b></td>
+            </tr>
+            <tr>
+              <td>পিতা</td>
+              <td>:</td>
+              <td>শ্রী উত্তম নাথ</td>
+            </tr>
+            <tr>
+              <td>মাতা</td>
+              <td>:</td>
+              <td>শ্রীমতী পাপিয়া নাথ</td>
+            </tr>
+            <tr>
+              <td>নিবাস</td>
+              <td>:</td>
+              <td>গ্রাম: ঘোষপাড়া, পোঃ পুরাতন বনগাঁ, থানা: বনগাঁ, জেলা: উত্তর ২৪ পরগণা, পিন: ৭৪৩২৩৫</td>
+            </tr>
+          </table>
+          <!-- <div class="acts">
+            <a class="btn" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=Ghoshpara,+Puratan+Bongaon,+Bongaon,+North+24+Parganas,+743235">মানচিত্র</a>
+            <button class="btn"
+              onclick="copyText('গ্রাম: ঘোষপাড়া, পোঃ পুরাতন বনগাঁ, থানা: বনগাঁ, উত্তর ২৪ পরগণা - 743235')">কপি</button>
+          </div> -->
+        </div>
+        <div class="card">
+          <span class="badge">কন্যাপক্ষ</span>
+          <table>
+            <tr>
+              <td>পাত্রী</td>
+              <td>:</td>
+              <td><b>কল্যাণীয়া মোনালিসা দেবনাথ</b></td>
+            </tr>
+            <tr>
+              <td>পিতা</td>
+              <td>:</td>
+              <td>শ্রী মৃত্যুঞ্জয় দেবনাথ</td>
+            </tr>
+            <tr>
+              <td>মাতা</td>
+              <td>:</td>
+              <td>শ্রীমতী কাকলী দেবনাথ</td>
+            </tr>
+            <tr>
+              <td>ভ্রাতা</td>
+              <td>:</td>
+              <td>শ্রীমান মৃন্ময় দেবনাথ</td>
+            </tr>
+            <tr>
+              <td>নিবাস</td>
+              <td>:</td>
+              <td>গ্রাম: ভবানীপুর, পোঃ পুরাতন বনগাঁ, থানা: পেট্রাপোল, জেলা: উত্তর ২৪ পরগণা, পিন: ৭৪৩২৩৫</td>
+            </tr>
+          </table>
+          <!-- <div class="acts">
+            <a class="btn" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=Bhabanipur,+Puratan+Bongaon,+Petrapole,+North+24+Parganas,+743235">মানচিত্র</a>
+            <button class="btn"
+              onclick="copyText('গ্রাম: ভবানীপুর, পোঃ পুরাতন বনগাঁ, থানা: পেট্রাপোল, উত্তর ২৪ পরগণা - 743235')">কপি</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="sec fade-up">
+      <h2 class="hd"><span>❖</span>স্মারকলিপি<span>❖</span></h2>
+      <p class="sub">Ceremonial Schedule &amp; Venue Details</p>
+      <div class="grid">
+        <div class="card">
+          <span class="badge">মাঙ্গলিক আচার</span>
+          <h3 class="ct">শুভ বধূবরণ</h3>
+          <p class="cd">🕙 ১৪ই ডিসেম্বর, ২০২৬ (২৮শে অগ্রহায়ণ, ১৪৩৩) সোমবার · সকাল ১০:৩০</p>
+          <p class="ds">শঙ্খধ্বনি ও উলুধ্বনির মধ্যে শীতলপাটিতে দুধ-আলতায় পা রেখে লক্ষ্মীরূপে নববধূর শুভ গৃহপ্রবেশ।</p>
+        </div>
+        <div class="card">
+          <span class="badge">সান্ধ্য উৎসব</span>
+          <h3 class="ct">বউভাত ও প্রীতিভোজ</h3>
+          <p class="cd">🕖 ১৫ই ডিসেম্বর, ২০২৬ (২৯শে অগ্রহায়ণ, ১৪৩৩) মঙ্গলবার · সন্ধ্যা ৭:০০ হইতে</p>
+          <p class="ds">নবদম্পতির কল্যাণ কামনায় আশীর্বাদ ও পারিবারিক সান্ধ্য প্রীতিভোজ অনুষ্ঠান।</p>
+        </div>
+        <div class="card full">
+          <span class="badge">আপ্যায়ন ও অনুষ্ঠান বাসর</span>
+          <h3 class="ct">বরপক্ষের নিজ বাসভবন</h3>
+          <p class="ds" style="margin-bottom:8px">গ্রাম: ঘোষপাড়া, পোঃ পুরাতন বনগাঁ, থানা: বনগাঁ, জেলা: উত্তর ২৪ পরগণা,
+            পিন: ৭৪৩২৩৫</p>
+          <p class="ds" style="border-top:1px dashed rgba(194,140,50,.5);padding-top:8px"><b>পথনির্দেশ:</b> বনগাঁ রেল
+            স্টেশন হইতে পুরাতন বনগাঁ গামী টোটো বা অটোযোগে ঘোষপাড়া মোড়ে নামিয়া সন্নিকটে ।</p>
+          <div class="acts">
+            <a class="btn" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=Ghoshpara,+Puratan+Bongaon,+Bongaon,+North+24+Parganas,+743235">📍
+              গুগল ম্যাপে লোকেশন</a>
+            <button class="btn"
+              onclick="copyText('গ্রাম: ঘোষপাড়া, পোঃ পুরাতন বনগাঁ, থানা: বনগাঁ, উত্তর ২৪ পরগণা - 743235')">ঠিকানা কপি
+              করুন</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feast fade-up">
+      <img src="food.webp" alt="বউভাত প্রীতিভোজের আয়োজন" loading="lazy">
+      <div>বউভাত · প্রীতিভোজ</div>
+    </div>
+
+    <div class="sec fade-up">
+      <h3 class="hd" style="font-size:1.35rem"><span>❖</span>শুভলগ্নের প্রতীক্ষায়<span>❖</span></h3>
+      <p class="sub">Counting Down to Auspicious Moments</p>
+      <div class="cdg" role="timer" aria-live="off">
+        <div class="cb"><span class="cn" id="cd-d">০০</span><span class="cl">দিন</span></div>
+        <div class="cb"><span class="cn" id="cd-h">০০</span><span class="cl">ঘণ্টা</span></div>
+        <div class="cb"><span class="cn" id="cd-m">০০</span><span class="cl">মিনিট</span></div>
+        <div class="cb"><span class="cn" id="cd-s">০০</span><span class="cl">সেকেন্ড</span></div>
+      </div>
+      <p class="cd" style="margin-top:14px" id="cd-label">বধূবরণ: সোমবার, ১৪ ডিসেম্বর ২০২৬ · সকাল ১০:৩০</p>
+    </div>
+
+    <div class="sec foot fade-up">
+      <h3>বিনীত / বিনীতা,</h3>
+      <p style="font-size:1.2rem">শ্রী উত্তম নাথ ও শ্রীমতী পাপিয়া নাথ</p>
+      <p style="font-size:.95rem;color:#633718">ও নাথ পরিবারের সকল সদস্যবৃন্দ</p>
+      <div class="orn gold" style="max-width:240px"><i></i><b></b><i></i></div>
+      <p>আপনার সস্নেহ উপস্থিতি ও শুভাশীর্বাদই<br>আমাদের আনন্দের সবচেয়ে বড় প্রাপ্তি।</p>
+    </div>
+
+    <!-- Bottom ornamental border — SVG pattern -->
+    <div class="bottom-border">
+      <svg viewBox="0 0 674 56" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <pattern id="bp" width="42" height="56" patternUnits="userSpaceOnUse">
+            <rect width="42" height="56" fill="#f3dfa0" />
+            <path d="M0 0h42v8l-5 5-5-5-5 5-5-5-5 5-5-5-5 5-5-5z" fill="#a11d1d" />
+            <path d="M21 14l11 14-11 14-11-14z" fill="#a11d1d" />
+            <path d="M21 20l6 8-6 8-6-8z" fill="#f3dfa0" />
+            <circle cx="21" cy="28" r="2.4" fill="#d98a0c" />
+            <circle cx="0" cy="28" r="6" fill="none" stroke="#c28c32" stroke-width="1.5" />
+            <circle cx="42" cy="28" r="6" fill="none" stroke="#c28c32" stroke-width="1.5" />
+            <path d="M0 56v-8l5-5 5 5 5-5 5 5 5-5 5 5 5-5 5 5 5-5 5 5v8z" fill="#a11d1d" />
+          </pattern>
+        </defs>
+        <defs>
+          <linearGradient id="bs" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".35" />
+            <stop offset=".5" stop-color="#fff" stop-opacity="0" />
+            <stop offset="1" stop-color="#000" stop-opacity=".35" />
+          </linearGradient>
+        </defs>
+        <rect width="674" height="56" fill="url(#bp)" />
+        <rect width="674" height="56" fill="url(#bs)" />
+        <rect width="674" height="2" fill="#d9a032" />
+        <rect y="52" width="674" height="4" fill="#4a0808" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const bn = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+    const p2 = n => bn(String(n).padStart(2, '0'));
+    const audio = $('audio'), mb = $('music-btn');
+    const setIcon = () => mb.textContent = audio.paused ? '♪' : '❚❚';
+
+    $('enter-btn').onclick = () => { $('splash').classList.add('gone'); audio.play().then(setIcon).catch(() => { }) };
+    mb.onclick = () => { audio.paused ? audio.play().then(setIcon).catch(() => { }) : (audio.pause(), setIcon()) };
+
+    const target = new Date('2026-12-14T10:30:00+05:30').getTime();
+    function tick() {
+      const d = target - Date.now();
+      if (d <= 0) { ['d', 'h', 'm', 's'].forEach(k => $('cd-' + k).textContent = '০০'); $('cd-label').textContent = 'শুভ বধূবরণের লগ্ন সমাগত!'; return }
+      $('cd-d').textContent = p2(Math.floor(d / 864e5));
+      $('cd-h').textContent = p2(Math.floor(d % 864e5 / 36e5));
+      $('cd-m').textContent = p2(Math.floor(d % 36e5 / 6e4));
+      $('cd-s').textContent = p2(Math.floor(d % 6e4 / 1e3));
+    }
+    tick(); setInterval(tick, 1000);
+
+    let tt;
+    function copyText(t) {
+      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).catch(() => {
+        const a = document.createElement('textarea'); a.value = t; a.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove();
+      }).finally(() => { const e = $('toast'); e.textContent = 'ঠিকানা কপি হয়েছে ✓'; e.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => e.classList.remove('show'), 2400) });
+    }
+
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) } }), { threshold: .08 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    /* realistic marigold garlands, silk folds & tassels */
+    (function () {
+      const NS = 'http://www.w3.org/2000/svg', $$ = id => document.getElementById(id);
+      const el = (n, a, p) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e };
+      const svg = document.querySelector('.curtain svg'), defs = svg.querySelector('defs');
+      const f = el('g', { id: 'mgf' }, defs);
+      for (let i = 0; i < 14; i++)el('ellipse', { cx: 0, cy: -6.2, rx: 2.9, ry: 6.4, fill: 'url(#pet)', stroke: '#b86400', 'stroke-width': .3, transform: `rotate(${i * 25.7})` }, f);
+      for (let i = 0; i < 10; i++)el('ellipse', { cx: 0, cy: -3.8, rx: 2.3, ry: 4.3, fill: '#ffc933', opacity: .92, stroke: '#d98500', 'stroke-width': .2, transform: `rotate(${i * 36 + 14})` }, f);
+      el('circle', { r: 2.3, fill: 'url(#ctr)' }, f);
+      const lf = el('g', { id: 'lfa' }, defs);
+      el('path', { d: 'M0 0Q7-6 15 0Q7 6 0 0Z', fill: '#3c7a28', stroke: '#244d17', 'stroke-width': .4 }, lf);
+      el('path', { d: 'M1 0H14', stroke: '#7fb25a', 'stroke-width': .5 }, lf);
+      const rnd = (a, b) => a + Math.random() * (b - a);
+      const Y = t => 95 + 80 * t * (1 - t);
+      // swag garlands
+      const G = $$('garland');
+      for (let i = 0; i < 4; i++) {
+        const x0 = i * 168.5;
+        for (let k = 0; k <= 15; k++) {
+          const t = k / 15, x = x0 + t * 168.5, y = Y(t) + rnd(-2, 2);
+          el('use', { href: '#lfa', transform: `translate(${x} ${y}) rotate(${rnd(0, 360)}) scale(${rnd(.8, 1.1)})` }, G);
+        }
+        for (let k = 0; k <= 13; k++) {
+          const t = k / 13, x = x0 + t * 168.5 + rnd(-2, 2), y = Y(t) + rnd(-1.5, 1.5);
+          el('use', { href: '#mgf', transform: `translate(${x} ${y}) rotate(${rnd(0, 360)}) scale(${rnd(.82, 1.05)})` }, G);
+        }
+      }
+      // top rail
+      const T = $$('toprow');
+      for (let x = -4; x < 690; x += 11)el('use', { href: '#lfa', transform: `translate(${x} 14) rotate(${rnd(0, 360)}) scale(.9)` }, T);
+      for (let x = 2; x < 690; x += 15)el('use', { href: '#mgf', transform: `translate(${x} 12) rotate(${rnd(0, 360)}) scale(${rnd(.8, .98)})` }, T);
+      // silk folds (light + dark ridges)
+      const F = $$('folds');
+      for (let x = -10; x < 690; x += 17) {
+        const x0 = Math.floor(Math.max(0, Math.min(673, x)) / 168.5) * 168.5, t = (Math.max(0, Math.min(674, x)) - x0) / 168.5, y = Y(t) + 14;
+        const d = `M${x} 24Q${x + rnd(4, 10)} ${(24 + y) / 2} ${x + rnd(-4, 4)} ${y}`;
+        el('path', { d, stroke: Math.random() < .5 ? '#ff9c8c' : '#1a0000', opacity: rnd(.14, .3), 'stroke-width': rnd(2, 5), fill: 'none' }, F);
+      }
+      // gold tassels
+      const S = $$('tassels');
+      [168.5, 337, 505.5].forEach(x => {
+        el('path', { d: `M${x - 5} 100h10l-2 8h-6z`, fill: 'url(#gold)' }, S);
+        el('circle', { cx: x, cy: 99, r: 4.2, fill: 'url(#gold)', stroke: '#7a4e12', 'stroke-width': .5 }, S);
+        el('path', { d: `M${x - 6} 108h12l3 24h-18z`, fill: 'url(#gold)', stroke: '#7a4e12', 'stroke-width': .4 }, S);
+        for (let i = -2; i <= 2; i++)el('path', { d: `M${x + i * 2.8} 112V131`, stroke: '#7a4e12', 'stroke-width': .5, opacity: .7 }, S);
+      });
+    })();
+
+    /* falling marigold petals */
+    for (let i = 0; i < 12; i++) {
+      const p = document.createElement('span'); p.className = 'petal';
+      p.style.cssText = `left:${Math.random() * 100}%;animation-duration:${9 + Math.random() * 9}s;animation-delay:${-Math.random() * 14}s;transform:scale(${.6 + Math.random() * .7})`;
+      document.body.appendChild(p);
+    }
+  </script>
+</body>
+
+</html>

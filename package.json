@@ -1,0 +1,17 @@
+{
+  "name": "boubhat-invitation",
+  "version": "1.0.0",
+  "description": "Bengali Bodhu Boron and Boubhat Digital Invitation Card",
+  "private": true,
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "wedding",
+    "boubhat",
+    "bengali",
+    "invitation"
+  ],
+  "author": "",
+  "license": "ISC"
+}
